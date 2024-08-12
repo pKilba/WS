@@ -79,7 +79,7 @@ public class WebSocketServerEndpoint {
         scheduler.scheduleAtFixedRate(() -> {
             for (Session session : sessions) {
                 try {
-                    session.getRemote().sendString("Periodic message from server");
+                    session.getRemote().sendString("place_bet");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
