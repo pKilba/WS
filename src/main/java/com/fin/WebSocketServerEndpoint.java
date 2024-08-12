@@ -57,7 +57,8 @@ public class WebSocketServerEndpoint {
 
         // Настройка соединения
         ServerConnector connector = new ServerConnector(server);
-        connector.setHost("localhost");
+        connector.setHost("0.0.0.0");
+
         connector.setPort(1357);
         connector.setIdleTimeout(300000); // Устанавливаем тайм-аут в 5 минут (300 000 миллисекунд)
         server.addConnector(connector);
