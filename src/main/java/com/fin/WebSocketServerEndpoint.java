@@ -60,7 +60,7 @@ public class WebSocketServerEndpoint {
         connector.setHost("0.0.0.0");
 
         connector.setPort(1357);
-        connector.setIdleTimeout(300000); // Устанавливаем тайм-аут в 5 минут (300 000 миллисекунд)
+        connector.setIdleTimeout(1300000); // Устанавливаем тайм-аут в 5 минут (300 000 миллисекунд)
         server.addConnector(connector);
 
         // Настройка контекста для сервлетов
@@ -70,7 +70,7 @@ public class WebSocketServerEndpoint {
 
         // Настройка Jetty WebSocket контейнера с увеличенным тайм-аутом
         JettyWebSocketServletContainerInitializer.configure(context, (servletContext, wsContainer) -> {
-            wsContainer.setIdleTimeout(Duration.ofDays(300000)); // Устанавливаем тайм-аут на уровне WebSocket контейнера
+            wsContainer.setIdleTimeout(Duration.ofDays(1300000)); // Устанавливаем тайм-аут на уровне WebSocket контейнера
             wsContainer.addMapping("/ws", WebSocketServerEndpoint.class);
         });
 
@@ -84,7 +84,7 @@ public class WebSocketServerEndpoint {
                     e.printStackTrace();
                 }
             }
-        }, 0, 1, TimeUnit.MINUTES); // Отправка сообщения каждые 1 минуту
+        }, 0, 6, TimeUnit.MINUTES); // Отправка сообщения каждые 1 минуту
 
         try {
             server.start();
